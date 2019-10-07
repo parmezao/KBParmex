@@ -1,0 +1,33 @@
+﻿@model ProdutoAddEditVM
+
+<h2>@ViewBag.Title</h2><br />
+
+<form method="post">
+
+    <input type="hidden" name="IdUsuarioRegistro" value="@Model?.IdUsuarioRegistro" />
+    <input type="hidden" name="DataHoraRegistro" value="@Model?.DataHoraRegistro" />
+
+    <div class="form-group">
+        <label asp-for="CodProduto"></label>
+        <input class="form-control" asp-for="@Model.CodProduto" autofocus>
+        <span asp-validation-for="CodProduto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input class="form-control" asp-for="@Model.Nome" autofocus>
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button class="btn btn-outline-info" type="submit">Salvar</button>
+        <a class="btn btn-outline-danger" asp-action="Index" asp-controller="Produto">Cancelar</a>
+    </div>
+
+</form>
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+

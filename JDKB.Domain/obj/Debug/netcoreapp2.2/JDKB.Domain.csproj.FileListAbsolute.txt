@@ -1,0 +1,17 @@
+D:\DotNet\JDKB\JDKB.Domain\bin\Debug\netcoreapp2.2\JDKB.Domain.deps.json
+D:\DotNet\JDKB\JDKB.Domain\bin\Debug\netcoreapp2.2\JDKB.Domain.dll
+D:\DotNet\JDKB\JDKB.Domain\bin\Debug\netcoreapp2.2\JDKB.Domain.pdb
+D:\DotNet\JDKB\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.csproj.CoreCompileInputs.cache
+D:\DotNet\JDKB\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.AssemblyInfoInputs.cache
+D:\DotNet\JDKB\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.AssemblyInfo.cs
+D:\DotNet\JDKB\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.dll
+D:\DotNet\JDKB\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.pdb
+D:\DotNet\JDKB\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.csprojAssemblyReference.cache
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\bin\Debug\netcoreapp2.2\JDKB.Domain.deps.json
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\bin\Debug\netcoreapp2.2\JDKB.Domain.dll
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\bin\Debug\netcoreapp2.2\JDKB.Domain.pdb
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.csprojAssemblyReference.cache
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.AssemblyInfoInputs.cache
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.AssemblyInfo.cs
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.dll
+D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Domain\obj\Debug\netcoreapp2.2\JDKB.Domain.pdb

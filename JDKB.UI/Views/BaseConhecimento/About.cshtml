@@ -1,0 +1,123 @@
+﻿
+@inject JDKB.Domain.Contracts.IAppVersionService AppVersionService
+
+<style>
+
+    :root {
+        --input-padding-x: 1.5rem;
+        --input-padding-y: .75rem;
+    }
+
+    body {
+        background: #BD2424;
+        background: linear-gradient(to right, #BD2424, #EB6F6F);
+    }
+
+    .card-signin {
+        border: 0;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .card-signin .card-title {
+        margin-bottom: 2rem;
+        font-weight: 300;
+        font-size: 1.5rem;
+    }
+
+    .card-signin .card-body {
+        padding: 2rem;
+    }
+
+    .form-signin {
+        width: 100%;
+    }
+
+    .form-signin .btn {
+        font-size: 80%;
+        border-radius: 5rem;
+        letter-spacing: .1rem;
+        font-weight: bold;
+        padding: 1rem;
+        transition: all 0.2s;
+    }
+
+    .form-label-group {
+        position: relative;
+        margin-bottom: 1rem;
+    }
+
+    .form-label-group input {
+        height: auto;
+        border-radius: 2rem;
+    }
+
+    .form-label-group > input,
+    .form-label-group > label {
+        padding: var(--input-padding-y) var(--input-padding-x);
+    }
+
+    .form-label-group > label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        margin-bottom: 0;
+        /* Override default `<label>` margin */
+        line-height: 1.5;
+        color: #495057;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        transition: all .1s ease-in-out;
+    }
+
+    a, a:hover {
+        color: darkred
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+
+                    <div class="card-body">
+                        <div class="containerlogojd" style="display:inline-block;float:left;">
+                            <img src="~/images/Logo.png" />
+                        </div>
+
+                        <h5 class="card-title text-center" style="color:#BD2424"><strong>Sobre</strong></h5>
+
+                        <div class="container" style="text-align:center;display:inline-block">
+                            <h2><span>@AppVersionService.Product</span></h2>
+                        </div>
+
+                        <div class="card-text ">
+                            <div class="custom-control" style="display:inline-block">
+                                <span>
+                                    <i class="zmdi zmdi-balance"></i>
+                                </span>
+                                Companhia :
+                            </div>
+                            <div class="mt-4" style="text-align:left;display:inline-block;">
+                                <a href="https://www.jdconsultores.com.br">@AppVersionService.Company</a>
+                            </div>
+
+                            <div class="custom-control">
+                                <span>
+                                    <i class="zmdi zmdi-file"></i>
+                                </span>
+                                Versão : @AppVersionService.Version
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

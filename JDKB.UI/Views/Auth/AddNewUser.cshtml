@@ -1,0 +1,49 @@
+﻿@model UsuarioAddEditVM
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+<form method="post">
+
+    <input type="hidden" name="IdUsuarioRegistro" value="@Model?.IdUsuarioRegistro" />
+    <input type="hidden" name="DataHoraRegistro" value="@Model?.DataHoraRegistro" />
+    <input type="hidden" name="SitUsuario" value="@Model?.SitUsuario" />
+
+    @if (ViewBag.IsEditing == "S")
+    {
+        <input type="hidden" name="Senha" value="@Model?.Senha" />
+    }
+
+    <div class="form-group">
+        <label asp-for="NomeUsuario"></label>
+        <input class="form-control" asp-for="@Model.NomeUsuario" autofocus>
+        <span asp-validation-for="NomeUsuario" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input type="email" class="form-control" asp-for="@Model.Email" autofocus>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    @if (ViewBag.IsEditing == "N")
+    {
+        <div class="form-group">
+            <label asp-for="Senha">Senha</label>
+            <input class="form-control" type="password" asp-for="@Model.Senha" autofocus required>
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+    }
+
+    <div>
+        <button class="btn btn-outline-info" type="submit">Salvar</button>
+        <a class="btn btn-outline-danger" asp-action="SignIn" asp-controller="Auth">Cancelar</a>
+    </div>
+
+</form>
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+

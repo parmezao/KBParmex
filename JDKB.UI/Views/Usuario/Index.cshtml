@@ -1,0 +1,136 @@
+﻿@model PaginatedList<Usuario>
+@using JDKB.Helpers
+
+@{ 
+    var userId = User.Claims.Where(u => u.Type == "id").Select(c => c.Value).FirstOrDefault();
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="mt-4">
+
+    <form asp-action="Index" method="get">
+        <div class="input-group">
+            <input type="text" name="SearchString" class="form-control" placeholder="Pesquisar por..." aria-label="Pesquisa" aria-describedby="basic-addon2" value="@ViewData["CurrentFilter"]">
+            <div class="input-group-append">
+                <input type="submit" value="Localizar" class="btn btn-primary" />
+                <a asp-action="AddEdit" asp-controller="Usuario" class="btn btn-danger">+</a>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped table-hover table-bordered table-sm mt-4" cellspacing="0" width="100%">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-sortOrder="@ViewData["UsuarioSortParm"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]" style="color:white">Nome</a>
+                </th>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-sortOrder="@ViewData["UsuarioSortParm"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]" style="color:white">Email</a>
+                </th>
+                <th>
+                    <a asp-action="Index"
+                       asp-route-sortOrder="@ViewData["DescUsuarioSortParm"]"
+                       asp-route-currentFilter="@ViewData["CurrentFilter"]" style="color:white">Data Criação</a>
+                </th>
+                @*<th></th>*@
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (Model.Count > 0)
+            {
+                @foreach (var usuario in Model)
+                {
+                    <tr id="usuario-@usuario.IdUsuario">
+                        <td>@usuario.NmUsuario</td>
+                        <td>@usuario.EmailUsuario</td>
+                        <td>@usuario.DhRegistro.DecimalDateToString()</td>
+                        @*<td>
+                            @if (usuario.IdUsuario.ToString() == userId)
+                            {
+                                <a asp-action="AddEdit" asp-controller="Usuario" asp-route-id="@usuario.IdUsuario" class="btn btn-sm btn-outline-info">Editar</a>
+                            }
+                            else
+                            {
+                                <a asp-action="AddEdit" asp-controller="Usuario" asp-route-id="@usuario.IdUsuario" class="btn btn-sm btn-outline-info disabled">Editar</a>
+                            }
+
+                            <button class="btn btn-sm btn-outline-danger" disabled onclick="delModal('@usuario.IdUsuario', '@usuario.NmUsuario')">Excluir</button>
+                        </td>*@
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    @*<td>
+                        <button class="btn btn-sm btn-outline-info" disabled>Editar</button>
+                        <button class="btn btn-sm btn-outline-danger" disabled>Excluir</button>
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @*Controle dos botões da paginação*@
+    @{
+        var firstDisabled = Model.FirstPage ? "disabled" : "";
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        var lastDisabled = Model.LastPage ? "disabled" : "";
+    }
+
+    @*Botões da paginação*@
+    <div class="mt-3" style="position:relative; text-align:center;">
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="1"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-outline-primary @firstDisabled">
+            |<<
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-outline-primary @prevDisabled">
+            <
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-outline-primary @nextDisabled">
+            >
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@Model.TotalPages"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-outline-primary @lastDisabled">
+            >>|
+        </a>
+    </div>
+
+</div>
+
+<partial name="_delModal" />
+
+<script>
+    let data = {};
+    data.urlDel = '@Url.Action("Excluir","Usuario")';
+    data.dataTipo = 'Usuario';
+    data.trId = "usuario";
+</script>
+
+@section scripts {
+    <script src="~/js/delModal.js"></script>
+}

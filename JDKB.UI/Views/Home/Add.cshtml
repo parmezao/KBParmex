@@ -1,0 +1,31 @@
+﻿@model NPC_SituacaoAddVM
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h3>Adicionar Situação</h3>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="CD_OBJETO"></label>
+        <input class="form-control" asp-for="@Model.CD_OBJETO" autofocus>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CD_SITUACAO"></label>
+        <input class="form-control" asp-for="@Model.CD_SITUACAO" autofocus>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DSC_SITUACAO"></label>
+        <input class="form-control" asp-for="@Model.DSC_SITUACAO" autofocus>
+    </div>
+
+    <div>
+        <button class="btn btn-outline-info" type="submit">Salvar</button>
+        <a class="btn btn-outline-danger" asp-action="Index" asp-controller="Home">Voltar</a>
+    </div>
+
+</form>

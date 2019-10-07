@@ -1,0 +1,419 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.UI\\JDKB.UI.csproj": {}
+  },
+  "projects": {
+    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj",
+        "projectName": "JDKB.Data",
+        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj",
+        "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
+        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wparmezao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj"
+              },
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj",
+        "projectName": "JDKB.DI",
+        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj",
+        "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
+        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wparmezao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj",
+        "projectName": "JDKB.Domain",
+        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj",
+        "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
+        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wparmezao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\JDKB.Email.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\JDKB.Email.csproj",
+        "projectName": "JDKB.Email",
+        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\JDKB.Email.csproj",
+        "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
+        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wparmezao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj",
+        "projectName": "JDKB.Helpers",
+        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj",
+        "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
+        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wparmezao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.UI\\JDKB.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.UI\\JDKB.UI.csproj",
+        "projectName": "JDKB.UI",
+        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.UI\\JDKB.UI.csproj",
+        "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
+        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\wparmezao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj"
+              },
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj"
+              },
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\JDKB.Email.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\JDKB.Email.csproj"
+              },
+              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Logging.Log4Net.AspNetCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

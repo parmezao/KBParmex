@@ -1,0 +1,37 @@
+﻿@model SituacaoBaseAddEditVM
+
+<h2>@ViewBag.Title</h2>
+
+<form method="post">
+
+    <div class="form-group mt-4">
+        <label asp-for="Situacao"></label>
+        @if (ViewBag.IsEditing == "S")
+        {
+            <input class="form-control" asp-for="@Model.Situacao" readonly autofocus>
+        }
+        else
+        {
+            <input class="form-control" asp-for="@Model.Situacao" autofocus>
+            <span asp-validation-for="Situacao" class="text-danger"></span>
+        }
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DescSituacao"></label>
+        <input class="form-control" asp-for="@Model.DescSituacao" autofocus>
+        <span asp-validation-for="DescSituacao" class="text-danger"></span>
+    </div>
+
+    <div>
+        <button class="btn btn-outline-info" type="submit">Salvar</button>
+        <a class="btn btn-outline-danger" asp-action="Index" asp-controller="SituacaoBase">Cancelar</a>
+    </div>
+
+</form>
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+

@@ -1,0 +1,151 @@
+﻿@model BaseConhecimentoAddEditVM
+
+@{ 
+    decimal SeqVersao = (Model != null) ? Model.SeqVersao : -1;
+    bool IsAuth = User.Identity.IsAuthenticated;
+    string userContext = User.Claims.Count() > 0 ? User.Claims.Where(c => c.Type == "id").FirstOrDefault().Value : "-1";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form id="formAddEditBC" method="post">
+
+    <input type="hidden" asp-for="@SeqVersao">
+    <input type="hidden" name="IdUsuarioRegistro" value="@Model?.IdUsuarioRegistro" />
+    <input type="hidden" name="DataHoraRegistro" value="@Model?.DataHoraRegistro" />
+    <input type="hidden" name="SitBase" value="@Model?.SitBase" />
+
+    <div class="form-group mt-4">
+        <label class="control-label font-weight-bold">Título</label>
+
+        @if (IsAuth && (ViewBag.IsEditing == "N" || ViewBag.IsEditing == "S" && userContext == Model?.IdUsuarioRegistro.ToString()))
+        {
+            <input class="form-control col-sm-12" asp-for="@Model.Titulo" autofocus>
+            <span asp-validation-for="Titulo" class="text-danger"></span>
+        }
+        else
+        {
+            <span class="form-text">@Model.Titulo</span>
+        }
+
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label font-weight-bold">Palavra(s) Chave</label>
+
+        @if (IsAuth && ViewBag.IsEditing == "N")
+        {
+            <input class="form-control col-sm-12" asp-for="@Model.PalavraChave" autofocus>
+            <span asp-validation-for="PalavraChave" class="text-danger"></span>
+        }
+        else
+        {
+            <span class="form-text">@Model.PalavraChave</span>
+        }
+
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label font-weight-bold" asp-for="Produto"></label>
+
+        @if (IsAuth && ViewBag.IsEditing == "N")
+        {
+            <select class="form-control col-sm-12" asp-for="Produto" asp-items="ViewBag.ProdutoDaBase">
+                <option value="">Selecione...</option>
+            </select>
+            <span asp-validation-for="Produto" class="text-danger"></span>
+        }
+        else
+        {
+            <select readonly="readonly" tabindex="-1" aria-disabled="true" class="form-control col-sm-12" asp-for="Produto" asp-items="ViewBag.ProdutoDaBase">
+                <option value="">Selecione...</option>
+            </select>
+        }
+
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label font-weight-bold" asp-for="TpVisualizacao"></label>
+
+        @if (IsAuth && (ViewBag.IsEditing == "N" || ViewBag.IsEditing == "S" && userContext == Model?.IdUsuarioRegistro.ToString()))
+        {
+            <select class="form-control" asp-for="TpVisualizacao" asp-items="ViewBag.TiposDeVisualizacao">
+                <option value="">Selecione...</option>
+            </select>
+            <span asp-validation-for="TpVisualizacao" class="text-danger"></span>
+        }
+        else
+        {
+            <select readonly="readonly" class="form-control" asp-for="TpVisualizacao" asp-items="ViewBag.TiposDeVisualizacao">
+                <option value="">Selecione...</option>
+            </select>
+        }
+
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label font-weight-bold">Resumo</label>
+
+        @if (IsAuth && (ViewBag.IsEditing == "N" || ViewBag.IsEditing == "S" && userContext == Model?.IdUsuarioRegistro.ToString()))
+        {
+            <textarea style="height:250px;width:900px" asp-for="@Model.TextoResumo" class="summernote col-sm-12"></textarea>
+            <span asp-validation-for="TextoResumo" class="text-danger"></span>            
+        }
+        else
+        {
+            <p>@Html.Raw(Model.TextoResumo)</p>
+        }
+
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label font-weight-bold">Causa Raiz</label>
+
+        @if (IsAuth && (ViewBag.IsEditing == "N" || ViewBag.IsEditing == "S" && userContext == Model?.IdUsuarioRegistro.ToString()))
+        {
+            <textarea id="areaCausaRaiz" style="display:none;" asp-for="@Model.TextoCausaRaiz" class="summernote col-sm-12"></textarea>
+            <span asp-validation-for="TextoCausaRaiz" class="text-danger"></span>            
+        }
+        else
+        {
+            <p>@Html.Raw(Model.TextoCausaRaiz)</p>
+        }
+
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label font-weight-bold">Solução Paliativa</label>
+
+        @if (IsAuth && (ViewBag.IsEditing == "N" || ViewBag.IsEditing == "S" && userContext == Model?.IdUsuarioRegistro.ToString()))
+        {
+            <textarea style="height:250px;width:900px" asp-for="@Model.TextoSolucaoPaliativa" class="summernote col-sm-12"></textarea>
+            <span asp-validation-for="TextoSolucaoPaliativa" class="text-danger"></span>            
+        }
+        else
+        {
+            <p>@Html.Raw(Model.TextoSolucaoPaliativa)</p>
+        }
+
+    </div>
+
+    <div>
+        @if (IsAuth && (ViewBag.IsEditing == "N" || ViewBag.IsEditing == "S" && userContext == Model?.IdUsuarioRegistro.ToString()))
+        {
+            <button class="btn btn-outline-info mt-2" type="submit">Salvar</button>
+            <a class="btn btn-outline-danger mt-2" asp-action="Index" asp-controller="BaseConhecimento">Cancelar</a>
+        }
+        else
+        {
+            <a class="btn btn-outline-danger mt-2" asp-action="Index" asp-controller="BaseConhecimento">Voltar</a>
+        }
+
+    </div>
+
+</form>
+
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+

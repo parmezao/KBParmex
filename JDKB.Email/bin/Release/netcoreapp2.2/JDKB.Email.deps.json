@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "JDKB.Email/1.0.0": {
+        "dependencies": {
+          "JDKB.Helpers": "1.0.0"
+        },
+        "runtime": {
+          "JDKB.Email.dll": {}
+        }
+      },
+      "JDKB.Helpers/1.0.0": {
+        "runtime": {
+          "JDKB.Helpers.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "JDKB.Email/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JDKB.Helpers/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

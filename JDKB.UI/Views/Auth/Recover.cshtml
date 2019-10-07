@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Redefinir Senha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Redefinir Senha</h2>
+                </div>
+                <div class="panel-body mt-4">
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                            <input type="email" id="Email" class="form-control input-sm" placeholder="Endereço de e-mail" autofocus="" name="Email" required />
+                            <label class="alert-danger" id="validate_Email" style="margin-bottom: 10px"></label>
+                        </div>
+                    </div>
+
+                    <input type="button" onclick="Recover()" value="Recuperar Senha" class="btn btn-danger btn-block">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  
+    function Recover() {
+
+        var email = $("#Email").val();
+
+        if (email == "") {
+            toastr.warning('Informe um email válido para recuperação!');
+            $("#Email").focus();
+            return ;
+        }            
+
+        $.post("@Url.Action("Recover", "Auth")", { email: email }).done(function (data) {
+
+            if (data.error) {
+                toastr.error('Email informado não cadastrado!', 'JDKB');
+            }
+            else {
+                toastr.success('Email para recuperação da senha enviado com sucesso!', 'JDKB');
+            }            
+        });
+    }
+
+</script>

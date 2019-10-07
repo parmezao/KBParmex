@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {
+  },
+  "dependencies": {
+    "toastr": "2.1.4"
+  }
+}

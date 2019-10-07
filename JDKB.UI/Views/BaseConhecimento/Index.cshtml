@@ -1,0 +1,160 @@
+﻿@model PaginatedList<BaseConhecimento>
+@using JDKB.Helpers
+
+    <style>
+        a, a:hover {
+            color: #1a0dab;
+        }
+
+        span {
+            color: #dc3545; /*#006621;*/
+        }
+
+        mark, .mark {
+            padding: 0;
+            background-color: yellow;
+        }
+
+        .search_conteudo {
+            font-size: small;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 0px;
+        }
+
+        .tags {
+            font-size: x-small;
+            margin-bottom: 5px;
+            color: darkblue; /*#006621;*/
+        }
+
+        .resultStats {
+            color: #808080;
+        }
+
+        .small, small {
+            font-size: 90%;
+        }
+
+    </style>
+
+    <div class="mt-4">
+
+        <form asp-action="Index" method="get">
+            <div class="input-group">
+                <input type="text" name="SearchString" class="form-control" placeholder="Pesquisar por..."
+                       aria-label="Pesquisa" aria-describedby="basic-addon2" value="@ViewData["CurrentFilter"]">
+
+                <div class="input-group-append">
+                    <input type="submit" value="Localizar" class="btn btn-primary" />
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-action="AddEdit" asp-controller="BaseConhecimento" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span>+</a>
+                    }                            
+
+                </div>
+
+            </div>
+        </form>
+
+        <div class="col-md-11 col-xs-12 col-sm-12 mt-4" style="padding-left: 0px;">
+
+            <div class="search_conteudo mt-4">
+
+                @*Texto com o Resultado da Busca*@
+                @{
+                    if (Model.TotalItens == 0)
+                    {
+                        <small class="resultStats"><i>Nenhum resultado encontrado</i></small>
+                    }
+                    else if (Model.TotalItens == 1)
+                    {
+                        <small class="resultStats">Foi encontrado 1 resultado</small>
+                    }
+                    else
+                    {
+                        <small class="resultStats">Foram encontrados @Model.TotalItens.ToString() resultados</small>
+                    }
+                }
+
+                @foreach (var item in Model)
+                {
+                    // Título
+                    <h2>
+                        <a asp-action="AddEdit" asp-controller="BaseConhecimento" asp-route-id="@item.Id">
+                            @Html.Raw(item.Resumo.Select(t => t.DsTitulo).FirstOrDefault())
+                        </a>
+                    </h2>
+
+                    // Palavra(s) chave
+                    <div class="tags">
+                        @*<span>*@
+                            @Html.Raw(item.BuscaChave.Select(t => t.Tags.SplitText(x => x)).FirstOrDefault())
+                        @*</span>*@
+                    </div>
+
+                    // Conteúdo do Resumo
+                    <div class="search_conteudo" style="font-size:small">
+                        @Html.Raw(item.Resumo.Select(r => r.Texto).FirstOrDefault())
+                    </div>
+
+                    // Produto
+                    <div>
+                        <p class="text-right" style="font-size: x-small; color: #777">
+                            Produto: @item.BaseProduto.Select(e => e.Produto.NmProduto).FirstOrDefault()
+                        </p>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+        @*Controle dos botões da paginação*@
+        @{
+            var firstDisabled = Model.FirstPage ? "disabled" : "";
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+            var lastDisabled = Model.LastPage ? "disabled" : "";
+        }
+
+        @*Botões da paginação*@
+        <div class="col-md-offset-6 mt-5" style="position:relative; text-align:center;">
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="1"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-outline-primary @firstDisabled">
+                |<<
+            </a>
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex - 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-outline-primary @prevDisabled">
+                <
+            </a>
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@(Model.PageIndex + 1)"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-outline-primary @nextDisabled">
+                >
+            </a>
+            <a asp-action="Index"
+               asp-route-sortOrder="@ViewData["CurrentSort"]"
+               asp-route-pageNumber="@Model.TotalPages"
+               asp-route-currentFilter="@ViewData["CurrentFilter"]"
+               class="btn btn-outline-primary @lastDisabled">
+                >>|
+            </a>
+        </div>
+
+    </div>
+
+ 

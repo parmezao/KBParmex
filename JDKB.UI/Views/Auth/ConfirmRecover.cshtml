@@ -1,0 +1,54 @@
+﻿@model JDKB.UI.Models.UsuarioAddEditVM
+
+@{
+    ViewBag.Title = "Redefinir Senha";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-signin" method="post" asp-antiforgery="true">
+
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Email)
+    @Html.HiddenFor(model => model.NomeUsuario)
+
+    <div class="container">
+        <div class="row centered-form">
+            <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">Redefinir Senha</h2>
+                    </div>
+
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                    <div class="panel-body mt-4">
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-key"></i>
+                                </span>
+                                <input id="Senha" class="form-control input-group-sm" required type="password" placeholder="Senha" asp-for="Senha">
+                            </div>
+                            <span asp-validation-for="Senha" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-key"></i>
+                                </span>
+                                <input id="ConfirmSenha" class="form-control input-group-sm" required type="password" placeholder="Confirme a senha" asp-for="ConfirmaSenha">
+                            </div>
+                            @Html.ValidationMessageFor(model => model.ConfirmaSenha, "", new { @class = "text-danger" })
+                        </div>
+
+                        <input type="submit" asp-action="ResetPassword" asp-controller="Auth" value="Redefinir senha" class="btn btn-danger btn-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+

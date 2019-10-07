@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <ApplicationIcon></ApplicationIcon>
+    <Description>JDKB - Base de Conhecimento</Description>
+    <Copyright>JDKB - Todos os direitos reservados</Copyright>
+    <Company>JD Consultores</Company>
+    <Product>JDKB - Base de Conhecimento</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="JDTransmiteMQ_Icon2.ico" />
+    <None Remove="overridedFileName.log" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\JDKB.Data\JDKB.Data.csproj" />
+    <ProjectReference Include="..\JDKB.DI\JDKB.DI.csproj" />
+    <ProjectReference Include="..\JDKB.Email\JDKB.Email.csproj" />
+    <ProjectReference Include="..\JDKB.Helpers\JDKB.Helpers.csproj" />
+  </ItemGroup>
+
+</Project>
