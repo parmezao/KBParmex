@@ -3823,11 +3823,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.TestConsole\\JDKB.TestConsole.csproj",
+      "projectUniqueName": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.TestConsole\\JDKB.TestConsole.csproj",
       "projectName": "JDKB.TestConsole",
-      "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.TestConsole\\JDKB.TestConsole.csproj",
+      "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.TestConsole\\JDKB.TestConsole.csproj",
       "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
-      "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.TestConsole\\obj\\",
+      "outputPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.TestConsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3846,8 +3846,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj": {
-              "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj"
+            "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\JDKB.Data.csproj": {
+              "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\JDKB.Data.csproj"
             }
           }
         }

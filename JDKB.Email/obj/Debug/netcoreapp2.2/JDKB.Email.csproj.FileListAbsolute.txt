@@ -9,3 +9,14 @@ D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Email\obj
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.csproj.CopyComplete
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.dll
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\bin\Debug\netcoreapp2.2\JDKB.Email.deps.json
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\bin\Debug\netcoreapp2.2\JDKB.Email.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\bin\Debug\netcoreapp2.2\JDKB.Email.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\bin\Debug\netcoreapp2.2\JDKB.Helpers.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\bin\Debug\netcoreapp2.2\JDKB.Helpers.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.csprojAssemblyReference.cache
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.AssemblyInfoInputs.cache
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.AssemblyInfo.cs
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.csproj.CopyComplete
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.Email\obj\Debug\netcoreapp2.2\JDKB.Email.pdb

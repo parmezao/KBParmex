@@ -27,3 +27,18 @@ D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.DI\obj\De
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.csproj.CopyComplete
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.dll
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.DI.deps.json
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.DI.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.DI.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.Data.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.Domain.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.Helpers.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.Data.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.Domain.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\bin\Debug\netcoreapp2.2\JDKB.Helpers.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.csprojAssemblyReference.cache
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.AssemblyInfoInputs.cache
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.AssemblyInfo.cs
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.csproj.CopyComplete
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.DI\obj\Debug\netcoreapp2.2\JDKB.DI.pdb

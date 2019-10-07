@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj": {}
+    "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.DI\\JDKB.DI.csproj": {}
   },
   "projects": {
-    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj": {
+    "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\JDKB.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj",
+        "projectUniqueName": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\JDKB.Data.csproj",
         "projectName": "JDKB.Data",
-        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj",
+        "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\JDKB.Data.csproj",
         "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
-        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\obj\\",
+        "outputPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,11 +30,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj": {
-                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj"
+              "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Domain\\JDKB.Domain.csproj": {
+                "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Domain\\JDKB.Domain.csproj"
               },
-              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj": {
-                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj"
+              "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+                "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj": {
+    "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.DI\\JDKB.DI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj",
+        "projectUniqueName": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.DI\\JDKB.DI.csproj",
         "projectName": "JDKB.DI",
-        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\JDKB.DI.csproj",
+        "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.DI\\JDKB.DI.csproj",
         "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
-        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.DI\\obj\\",
+        "outputPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.DI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -107,8 +107,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj": {
-                "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Data\\JDKB.Data.csproj"
+              "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\JDKB.Data.csproj": {
+                "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Data\\JDKB.Data.csproj"
               }
             }
           }
@@ -147,14 +147,14 @@
         }
       }
     },
-    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj": {
+    "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Domain\\JDKB.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj",
+        "projectUniqueName": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Domain\\JDKB.Domain.csproj",
         "projectName": "JDKB.Domain",
-        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\JDKB.Domain.csproj",
+        "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Domain\\JDKB.Domain.csproj",
         "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
-        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Domain\\obj\\",
+        "outputPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -205,14 +205,14 @@
         }
       }
     },
-    "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+    "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj",
+        "projectUniqueName": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj",
         "projectName": "JDKB.Helpers",
-        "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj",
+        "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj",
         "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
-        "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\obj\\",
+        "outputPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

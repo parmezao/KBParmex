@@ -708,11 +708,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\JDKB.Email.csproj",
+      "projectUniqueName": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Email\\JDKB.Email.csproj",
       "projectName": "JDKB.Email",
-      "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\JDKB.Email.csproj",
+      "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Email\\JDKB.Email.csproj",
       "packagesPath": "C:\\Users\\wparmezao\\.nuget\\packages\\",
-      "outputPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Email\\obj\\",
+      "outputPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Email\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -731,8 +731,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj": {
-              "projectPath": "D:\\ST_Produtos\\JD KB\\06.Implementação\\01.DotNet\\JDKB Web AspNet\\JDKB.Helpers\\JDKB.Helpers.csproj"
+            "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+              "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj"
             }
           }
         }

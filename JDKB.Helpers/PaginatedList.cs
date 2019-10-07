@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JDKB.UI
+namespace JDKB.Helpers
 {
     public class PaginatedList<T> : List<T>
     {

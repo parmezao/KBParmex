@@ -31,3 +31,20 @@ D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.TestConso
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.csproj.CopyComplete
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.dll
 D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.TestConsole.deps.json
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.TestConsole.runtimeconfig.json
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.TestConsole.runtimeconfig.dev.json
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.TestConsole.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.TestConsole.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.Data.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.Domain.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.Helpers.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.Data.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.Domain.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\bin\Debug\netcoreapp2.2\JDKB.Helpers.pdb
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.csprojAssemblyReference.cache
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.AssemblyInfoInputs.cache
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.AssemblyInfo.cs
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.csproj.CopyComplete
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.dll
+D:\DotNet\Repositorios\KBParmex\JDKB.TestConsole\obj\Debug\netcoreapp2.2\JDKB.TestConsole.pdb

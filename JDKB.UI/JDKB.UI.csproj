@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="PaginatedList.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="JDTransmiteMQ_Icon2.ico" />
     <None Remove="overridedFileName.log" />
   </ItemGroup>
@@ -29,6 +33,11 @@
     <ProjectReference Include="..\JDKB.DI\JDKB.DI.csproj" />
     <ProjectReference Include="..\JDKB.Email\JDKB.Email.csproj" />
     <ProjectReference Include="..\JDKB.Helpers\JDKB.Helpers.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Scripts\" />
   </ItemGroup>
 
 </Project>
