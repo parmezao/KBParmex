@@ -106,7 +106,11 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj": {
+                "projectPath": "D:\\DotNet\\Repositorios\\KBParmex\\JDKB.Helpers\\JDKB.Helpers.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

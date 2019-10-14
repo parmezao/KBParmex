@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v2.2": {
       "JDKB.Domain/1.0.0": {
+        "dependencies": {
+          "JDKB.Helpers": "1.0.0"
+        },
         "runtime": {
           "JDKB.Domain.dll": {}
+        }
+      },
+      "JDKB.Helpers/1.0.0": {
+        "runtime": {
+          "JDKB.Helpers.dll": {}
         }
       }
     }
   },
   "libraries": {
     "JDKB.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "JDKB.Helpers/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

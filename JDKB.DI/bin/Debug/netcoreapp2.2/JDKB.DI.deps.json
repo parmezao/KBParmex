@@ -568,6 +568,9 @@
         }
       },
       "JDKB.Domain/1.0.0": {
+        "dependencies": {
+          "JDKB.Helpers": "1.0.0"
+        },
         "runtime": {
           "JDKB.Domain.dll": {}
         }

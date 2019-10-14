@@ -155,6 +155,7 @@ D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Erro
 D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Home\Add.cshtml.g.cs
 D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
 D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Home\Upload.cshtml.g.cs
 D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Produto\AddEdit.cshtml.g.cs
 D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Produto\Index.cshtml.g.cs
 D:\DotNet\Repositorios\KBParmex\JDKB.UI\obj\Debug\netcoreapp2.2\Razor\Views\Shared\CustomError.cshtml.g.cs

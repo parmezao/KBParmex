@@ -76,8 +76,8 @@ namespace JDKB.Data.EF.Repositories
 
                     foreach (var item in searchArr)
                     {
-                        WhereResumo = WhereResumo.Or(p => p.DsTitulo.ToLower().Contains(item));
-                        WhereResumo = WhereResumo.Or(p => p.Texto.Contains(item));
+                        WhereResumo = WhereResumo.Or(p => p.DsTituloPuro.ToLower().Contains(item));
+                        WhereResumo = WhereResumo.Or(p => p.TextoPuro.Contains(item));
                     }
                     
                     data = await _db

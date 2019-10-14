@@ -1,6 +1,6 @@
 ﻿@model PaginatedList<BaseConhecimento>
 @using JDKB.Helpers
-
+    
     <style>
         a, a:hover {
             color: #1a0dab;
@@ -47,20 +47,21 @@
 
         <form asp-action="Index" method="get">
             <div class="input-group">
-                <input type="text" name="SearchString" class="form-control" placeholder="Pesquisar por..."
+                <input type="text" name="SearchString" class="form-control shadow-sm bg-white rounded-left" placeholder="Pesquisar por..."
                        aria-label="Pesquisa" aria-describedby="basic-addon2" value="@ViewData["CurrentFilter"]">
 
-                <div class="input-group-append">
+                <div class="input-group-append shadow-sm">
                     <input type="submit" value="Localizar" class="btn btn-primary" />
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a asp-action="AddEdit" asp-controller="BaseConhecimento" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span>+</a>
-                    }                            
+                        <a asp-action="AddEdit" asp-controller="BaseConhecimento" class="btn btn-danger shadow-sm rounded-right"><span class="glyphicon glyphicon-plus-sign"></span>+</a>
+                    }
 
                 </div>
 
             </div>
+
         </form>
 
         <div class="col-md-11 col-xs-12 col-sm-12 mt-4" style="padding-left: 0px;">

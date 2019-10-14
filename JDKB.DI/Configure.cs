@@ -33,6 +33,7 @@ namespace JDKB.DI
             services.AddTransient<IBuscaChaveRepository, BuscaChaveRepositoryEF>();
             services.AddTransient<IUsuarioRepository, UsuarioRepositoryEF>();
             services.AddTransient<ISituacaoUsuarioRepository, SituacaoUsuarioRepositoryEF>();
+            services.AddTransient<IAnexoRepository, AnexoRepositoryEF>();
         }
     }
 }

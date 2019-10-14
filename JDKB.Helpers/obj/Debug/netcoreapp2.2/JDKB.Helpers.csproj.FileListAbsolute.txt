@@ -9,7 +9,6 @@ D:\ST_Produtos\JD KB\06.Implementação\01.DotNet\JDKB Web AspNet\JDKB.Helpers\o
 D:\DotNet\Repositorios\KBParmex\JDKB.Helpers\bin\Debug\netcoreapp2.2\JDKB.Helpers.deps.json
 D:\DotNet\Repositorios\KBParmex\JDKB.Helpers\bin\Debug\netcoreapp2.2\JDKB.Helpers.dll
 D:\DotNet\Repositorios\KBParmex\JDKB.Helpers\bin\Debug\netcoreapp2.2\JDKB.Helpers.pdb
-D:\DotNet\Repositorios\KBParmex\JDKB.Helpers\obj\Debug\netcoreapp2.2\JDKB.Helpers.csprojAssemblyReference.cache
 D:\DotNet\Repositorios\KBParmex\JDKB.Helpers\obj\Debug\netcoreapp2.2\JDKB.Helpers.AssemblyInfoInputs.cache
 D:\DotNet\Repositorios\KBParmex\JDKB.Helpers\obj\Debug\netcoreapp2.2\JDKB.Helpers.AssemblyInfo.cs
 D:\DotNet\Repositorios\KBParmex\JDKB.Helpers\obj\Debug\netcoreapp2.2\JDKB.Helpers.dll

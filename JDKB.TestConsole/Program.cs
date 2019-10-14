@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -32,14 +34,15 @@ namespace JDKB.TestConsole
         static void Main(string[] args)
         {
 
-            foreach (int i in Integers())
-            {
-                Console.WriteLine(i.ToString());
-            }
+
+            //foreach (int i in Integers())
+            //{
+            //    Console.WriteLine(i.ToString());
+            //}
 
             //Console.WriteLine($"Data: {StatusEnum.Active.ToString()}");
            
-            Console.ReadKey();
+            //Console.ReadKey();
 
             //return;
 
@@ -132,6 +135,26 @@ namespace JDKB.TestConsole
             //    }
             //);
 
+            //var anx = new Anexo
+            //{
+            //    Id = 1,
+            //    NomeArquivo = "parmex.jpg"
+            //};
+
+            //string path = @"C:\Pessoal\parmex.jpg";
+            //using (FileStream fs = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.None))
+            //{
+            //    byte[] bytes = new byte[fs.Length];
+
+            //    using (var ms = new MemoryStream(bytes))
+            //    {
+            //        fs.CopyToAsync(ms);
+            //        ms.Seek(0, SeekOrigin.Begin);
+
+            //        anx.Arquivo = ms.ToArray();
+            //    };
+            //}
+
             using (var db = new JDDataContext(connectionString))
             {
                 //db.ChangeTracker.LazyLoadingEnabled = false;
@@ -140,18 +163,47 @@ namespace JDKB.TestConsole
                 //db.BaseConhecimento.Add(bc);
                 //db.SaveChanges();
 
+                //db.Anexo.Add(anx);
+                //db.SaveChanges();
+
                 // Consulta 
                 //db.ChangeTracker.LazyLoadingEnabled = false;
 
-                var _db = db.Set<BaseConhecimento>();
+                //var _db = db.Set<BaseConhecimento>();
                 //var _db = db.Set<Usuario>();
+                var _db = db.Set<Anexo>();
 
-                var bc = _db.Skip(0).Take(10).ToList();
+                var anexos = _db.ToList();
 
-                foreach (var item in bc)
+                foreach (var item in anexos)
                 {
-                    Console.WriteLine(item.Id.ToString());
+                    Console.WriteLine(item.NomeArquivo);
+
+                    // Cria um novo arquivo à partir de um Memorystream, após carregar da base de dados
+                    using (var ms = new MemoryStream())
+                    {
+                        ms.Write(item.Arquivo, 0, item.Arquivo.Length);
+                        ms.Seek(0, SeekOrigin.Begin);
+
+                        var path = @"c:\pessoal\parmex3.jpg";
+                        using (var fs = new FileStream(path, FileMode.Create))
+                        {
+                            ms.CopyTo(fs);
+                            fs.Flush();
+                        }
+                    }
+
+                    // Cria um novo arquivo carregando diretamente da base de dados
+                    File.WriteAllBytes(@"c:\pessoal\parmex2.jpg", item.Arquivo.ToArray());
                 }
+
+
+                //var bc = _db.Skip(0).Take(10).ToList();
+
+                //foreach (var item in bc)
+                //{
+                //    Console.WriteLine(item.Id.ToString());
+                //}
 
                 //var usuario = _db.Find(Convert.ToDecimal(1));
 

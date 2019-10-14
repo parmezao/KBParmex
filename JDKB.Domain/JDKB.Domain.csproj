@@ -8,4 +8,8 @@
     <Folder Include="Helpers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JDKB.Helpers\JDKB.Helpers.csproj" />
+  </ItemGroup>
+
 </Project>

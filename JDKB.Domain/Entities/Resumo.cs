@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JDKB.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,7 +20,23 @@ namespace JDKB.Domain.Entities
 
         public string DsTitulo { get; set; }
 
+        public string DsTituloPuro
+        {
+            get
+            {
+                return DsTitulo.RemoveAccents();
+            }
+        }
+
         public string Texto { get; set; }
+
+        public string TextoPuro 
+        {
+            get 
+            {
+                return HtmlRemoval.StripTagsCharArray(Texto);
+            }
+        }
 
         public BaseConhecimento BaseConhecimento { get; set; }
 

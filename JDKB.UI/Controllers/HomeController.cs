@@ -1,8 +1,15 @@
-﻿using JDKB.Domain.Contracts.Data;
+﻿using JDKB.Data.EF;
+using JDKB.Domain.Contracts.Data;
 using JDKB.Domain.Contracts.Repositories;
+using JDKB.Domain.Entities;
 using JDKB.UI.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace JDKB.UI.Controllers
@@ -12,6 +19,8 @@ namespace JDKB.UI.Controllers
         //private readonly JDDataContext _ctx;
 
         private readonly INPC_SituacaoRepository _situacaoRepo;
+        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IAnexoRepository _anexoRepo;
         private readonly IUnityOfWork _uow;
 
         //public HomeController(JDDataContext ctx)
@@ -19,9 +28,12 @@ namespace JDKB.UI.Controllers
         //    _ctx = ctx;
         //}
 
-        public HomeController(INPC_SituacaoRepository situacaoRepo, IUnityOfWork uow)
+        public HomeController(INPC_SituacaoRepository situacaoRepo, IHostingEnvironment hostingEnvironment, 
+            IAnexoRepository anexoRepo, IUnityOfWork uow)
         {
             _situacaoRepo = situacaoRepo;
+            _hostingEnvironment = hostingEnvironment;
+            _anexoRepo = anexoRepo;
             _uow = uow;
         }
 
@@ -56,6 +68,109 @@ namespace JDKB.UI.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpGet]
+        public IActionResult Upload() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            if (Request.Form.Files == null || Request.Form.Files.Count == 0)
+                return Content("file not selected");
+
+            /// Salva na Base
+            var count = 0;
+            foreach (var item in Request.Form.Files)
+            {
+                /// Salva o arquivo em memória
+                byte[] bytes = new byte[item.Length];
+
+                using (var ms = new MemoryStream(bytes))
+                {
+                    await item.CopyToAsync(ms);
+                    ms.Seek(0, SeekOrigin.Begin);
+
+                    /// Salva em arquivo
+                    //var path = Path.Combine("c:\\", "Pessoal\\", file.FileName);
+                    //using (var fs = new FileStream(path, FileMode.Create))
+                    //{
+                    //    await ms.CopyToAsync(fs);
+                    //    await fs.FlushAsync();
+                    //}
+
+                    _anexoRepo.Add(new Anexo
+                    {
+                        Id = count + 1,
+                        NomeArquivo = item.FileName,
+                        Arquivo = ms.ToArray()
+                    });
+                    
+                    count++;
+                }
+            }
+
+            await _uow.CommitAsync();
+
+            //var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
+
+            //using (var stream = new FileStream(path, FileMode.Create))
+            //{
+            //    await file.CopyToAsync(stream);
+            //}
+
+            return RedirectToAction("Upload");
+        }
+
+        [HttpPost]
+        public IActionResult AddImage(List<IFormFile> files)
+        {
+            //if (files.Count == 0)
+            //    return Content("file(s) not selected");
+
+            //List<Anexo> anexos = (List<Anexo>)ViewData["Anexos"];
+            //if (anexos == null)
+            //{
+            //    anexos = new List<Anexo>();
+            //    ViewData["Anexos"] = anexos;
+            //}
+
+            foreach (var file in Request.Form.Files)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    ms.Seek(0, SeekOrigin.Begin);
+
+                    //anexos.Add(new Anexo
+                    //{
+                    //    NomeArquivo = file.FileName,
+                    //    Arquivo = ms.ToArray()
+                    //});
+
+                }
+            }
+
+            //IFormFile anexos = model.Anexos; //(List<Anexo>)ViewData["Anexos"];
+            //if (anexos == null)
+            //{
+            //    //anexos = new List<Anexo>();
+            //    model.Anexos = anexos; //new IFormFile;
+            //    //ViewData["Anexos"] = anexos;
+            //}
+
+            //foreach (var file in Request.Form.Files)
+            //{
+
+            //using (var ms = new MemoryStream())
+            //{
+            //    //file.CopyTo(ms);
+            //    //ms.Seek(0, SeekOrigin.Begin);                                 
+
+            //}
+            //}
+
+            return View("Upload", ViewData);
         }
     }
 }

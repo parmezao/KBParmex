@@ -29,17 +29,16 @@ namespace JDKB.Data.EF
         public DbSet<TipoVisualizacao> TipoVisualizacao { get; set; }
         public DbSet<SituacaoBase> SituacaoBase { get; set; }
         public DbSet<BaseConhecimento> BaseConhecimento { get; set; }
-        //public DbSet<Responsavel> Responsavel { get; set; }
         public DbSet<CausaRaiz> CausaRaiz { get; set; }
         public DbSet<Resumo> Resumo { get; set; }
         public DbSet<SolucaoPaliativa> SolucaoPaliativa { get; set; }
-        //public DbSet<Evento> Evento { get; set; }
         public DbSet<Produto> Produto { get; set; }
         public DbSet<PalavraChave> PalavraChave { get; set; }
         public DbSet<BuscaChave> BuscaChave { get; set; }
         public DbSet<SituacaoUsuario> SituacaoUsuario { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<BaseProduto> BaseProduto { get; set; }
+        public DbSet<Anexo> Anexo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -56,6 +55,16 @@ namespace JDKB.Data.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
+
+            /// ENTIDADE - Anexo
+            modelBuilder.Entity<Anexo>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.NomeArquivo)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+            });
 
             /// ENTIDADE - Produto
             modelBuilder.Entity<Produto>(entity =>

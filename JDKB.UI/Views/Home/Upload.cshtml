@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "Upload";
+}
+
+@{
+    List<Anexo> lsAnexo = (List<Anexo>)ViewData["Anexos"] == null ? new List<Anexo>() : (List<Anexo>)ViewData["Anexos"];
+}
+
+<style>
+
+    .dropzone {
+        margin-bottom: 10px;
+        border: dashed;
+        min-height: 250px;
+    }
+
+</style>
+
+<label for="Anexos" class="control-label col-sm-1">Anexos</label>
+
+<form id="frmUpload" asp-controller="Home" asp-action="AddImage" enctype="multipart/form-data" method="POST">
+    @*<input type="text" id="Username" name="Username" />*@
+    <div class="dropzone" id="my-dropzone" name="mainFileUploader">
+        <div class="fallback">
+            <input name="file" type="file" multiple />
+        </div>
+    </div>
+</form>
+<div>
+    <button type="submit" id="submit-all"> upload </button>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/dropzone/dropzone.min.js"></script>
+<script>
+
+    function Enviar() {
+        $("form#frmUpload").submit();
+    };
+
+    Dropzone.options.myDropzone = {
+        url: "/Home/UploadFile",
+        autoProcessQueue: false,
+        uploadMultiple: true,
+        parallelUploads: 10,
+        maxFiles: 100,
+        acceptedFiles: "image/*,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/docx,application/msword",
+        addRemoveLinks: true,
+        dictDefaultMessage: "<strong>Arraste os arquivos aqui ou clique para upload.</strong>",
+
+        init: function () {
+
+            var submitButton = document.querySelector("#submit-all");
+            var wrapperThis = this;
+
+            submitButton.addEventListener("click", function () {
+                wrapperThis.processQueue();
+            });
+
+            this.on("complete", function (data) {
+                $(".dz-remove").html("<div><span class='fa fa-trash text-danger' style='font-size: 1.5em'></span></div>");
+            });
+
+            this.on("maxfilesexceeded", function (file) {
+                this.removeFile(file);
+            });
+
+            //this.on("addedfile", function (file) {
+
+            //    // Create the remove button
+            //    var removeButton = Dropzone.createElement("<button class='btn btn-lg dark'>Remover</button>");
+
+            //    // Listen to the click event
+            //    removeButton.addEventListener("click", function (e) {
+            //        // Make sure the button click doesn't submit the form:
+            //        e.preventDefault();
+            //        e.stopPropagation();
+
+            //        // Remove the file preview.
+            //        wrapperThis.removeFile(file);
+            //        // If you want to the delete the file on the server as well,
+            //        // you can do the AJAX request here.
+            //    });
+
+            //    // Add the button to the file preview element.
+            //    file.previewElement.appendChild(removeButton);
+            //});
+
+            //this.on('sendingmultiple', function (data, xhr, formData) {
+            //    formData.append("Username", $("#Username").val());
+            //});
+        }
+    };
+</script>
