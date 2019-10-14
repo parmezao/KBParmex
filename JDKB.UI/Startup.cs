@@ -77,8 +77,8 @@ namespace JDKB.UI
             //}, path));
 
             // Log4Net
-            var loggingOptions = this.Configuration.GetSection("Log4NetCore").Get<Log4NetProviderOptions>();
-            loggerFactory.AddLog4Net(loggingOptions);
+            //var loggingOptions = this.Configuration.GetSection("Log4NetCore").Get<Log4NetProviderOptions>();
+            //loggerFactory.AddLog4Net(loggingOptions);
 
             app.UseMvc(routes =>
             {

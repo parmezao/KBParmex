@@ -23,7 +23,6 @@ namespace JDKB.UI.Controllers
         private readonly IProdutoRepository _produtoRepo;
         private readonly IBuscaChaveRepository _buscachaveRepo;
         private readonly IPalavraChaveRepository _palavrachaveRepo;
-        private readonly ILogger<BaseConhecimentoController> _logger;
         private readonly IUnityOfWork _uow;
 
         public BaseConhecimentoController(IBaseConhecimentoRepository baseconhecimentoRepo,
@@ -32,7 +31,6 @@ namespace JDKB.UI.Controllers
             IProdutoRepository produtoRepo,
             IBuscaChaveRepository buscachaveRepo,
             IPalavraChaveRepository palavrachaveRepo,
-            ILogger<BaseConhecimentoController> logger,
             IUnityOfWork uow)
         {
             _baseconhecimentoRepo = baseconhecimentoRepo;
@@ -41,88 +39,65 @@ namespace JDKB.UI.Controllers
             _produtoRepo = produtoRepo;
             _buscachaveRepo = buscachaveRepo;
             _palavrachaveRepo = palavrachaveRepo;
-            _logger = logger;
             _uow = uow;
         }
 
         public async Task<IActionResult> Index(string currentFilter, string searchString, int? pageNumber)
         {
-            try
+            ViewBag.Title = "Base de Conhecimento";
+
+            if (searchString != null)
+                pageNumber = 1;
+            else
+                searchString = currentFilter;
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var searchArray = new string[] { };
+            if (!String.IsNullOrEmpty(searchString))
             {
-                ViewBag.Title = "Base de Conhecimento";
-
-                if (searchString != null)
-                    pageNumber = 1;
-                else
-                    searchString = currentFilter;
-
-                ViewData["CurrentFilter"] = searchString;
-
-                var searchArray = new string[] { };
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    searchArray = searchString.RemoveAccents().KeyWordToArray();
-                    searchArray = Array.ConvertAll(searchArray, d => d.ToLower());
-                }
-
-                // Verifica se existe usuário logado
-                var userId = !string.IsNullOrEmpty(HttpContextHelper.GetAuthUserId(HttpContext)) ? Convert.ToDecimal(HttpContextHelper.GetAuthUserId(HttpContext)) : 0;
-
-                int pageSize = 10; // Número de registros por Página                 
-
-                var data = await _baseconhecimentoRepo.GetWithBaseChildsAsync(searchArray, userId, pageNumber ?? 1, pageSize);
-
-                int total = data.Select(c => c.TotalMath).FirstOrDefault();
-
-                return View(PaginatedList<BaseConhecimento>.Create(data.AsQueryable(), pageNumber ?? 1, pageSize, total));
+                searchArray = searchString.RemoveAccents().KeyWordToArray();
+                searchArray = Array.ConvertAll(searchArray, d => d.ToLower());
             }
-            catch (Exception e)
-            {
-                _logger.LogError(99, e, LoggerHelper.GetStringLogError(e.Message), new { });
 
-                ViewBag.CustomError = e.Message;
-                return View("CustomError");
-            }
+            // Verifica se existe usuário logado
+            var userId = !string.IsNullOrEmpty(HttpContextHelper.GetAuthUserId(HttpContext)) ? Convert.ToDecimal(HttpContextHelper.GetAuthUserId(HttpContext)) : 0;
+
+            int pageSize = 10; // Número de registros por Página                 
+
+            var data = await _baseconhecimentoRepo.GetWithBaseChildsAsync(searchArray, userId, pageNumber ?? 1, pageSize);
+
+            int total = data.Select(c => c.TotalMath).FirstOrDefault();
+
+            return View(PaginatedList<BaseConhecimento>.Create(data.AsQueryable(), pageNumber ?? 1, pageSize, total));
         }
 
         [HttpGet]
         public async Task<IActionResult> AddEdit(decimal? id)
         {
-            try
+            if (!User.Identity.IsAuthenticated && id == null)
             {
-
-                if (!User.Identity.IsAuthenticated && id == null)
-                {
-                    return RedirectToAction("SignIn", "Auth");
-                }
-
-                ViewBag.IsEditing = "N";
-
-                BaseConhecimentoAddEditVM model = null;
-
-                if (id != null)
-                {
-                    var data = await _baseconhecimentoRepo.GetWithBaseChildsAsync(id);
-                    if (data == null) return NotFound();
-
-                    model = data.ToVM();
-                    ViewBag.IsEditing = "S";
-                }
-
-                await getTipoVisualizacaoSelect();
-                await getSituacaoBaseSelect();
-                await getProdutosBaseSelect();
-
-                return View(model);
-
+                return RedirectToAction("SignIn", "Auth");
             }
-            catch (Exception e)
+
+            ViewBag.IsEditing = "N";
+
+            BaseConhecimentoAddEditVM model = null;
+
+            if (id != null)
             {
-                _logger.LogError(99, e, LoggerHelper.GetStringLogError(e.Message), new { });
+                var data = await _baseconhecimentoRepo.GetWithBaseChildsAsync(id);
+                if (data == null) return NotFound();
 
-                ViewBag.CustomError = e.Message;
-                return View("CustomError");
+                model = data.ToVM();
+                ViewBag.IsEditing = "S";
             }
+
+            await getTipoVisualizacaoSelect();
+            await getSituacaoBaseSelect();
+            await getProdutosBaseSelect();
+
+            return View(model);
         }
 
         private async Task getTipoVisualizacaoSelect()
@@ -165,100 +140,90 @@ namespace JDKB.UI.Controllers
         [Authorize]
         public async Task<IActionResult> AddEdit(decimal id, BaseConhecimentoAddEditVM model)
         {
-            try
+            ModelState.Remove("IdUsuarioRegistro");
+            ModelState.Remove("DataHoraRegistro");
+            ModelState.Remove("SitBase");
+
+            ViewBag.IsEditing = "N";
+            if (id > 0)
             {
-                ModelState.Remove("IdUsuarioRegistro");
-                ModelState.Remove("DataHoraRegistro");
-                ModelState.Remove("SitBase");
+                ModelState.Remove("PalavraChave");
+                ViewBag.IsEditing = "S";
+            }
 
-                ViewBag.IsEditing = "N";
-                if (id > 0)
+            if (!ModelState.IsValid)
+            {
+                await getTipoVisualizacaoSelect();
+                await getSituacaoBaseSelect();
+                await getProdutosBaseSelect();
+
+                return View(model);
+            }
+
+            var userContext = Convert.ToDecimal(HttpContextHelper.GetAuthUserId(HttpContext));
+
+            var data = model.ToData(userContext, id);
+
+            if (id == 0)
+            {
+                data.DtHrRegistro = Convert.ToDecimal(DateTime.Now.ToString("yyyyMMddHHmmss"));
+                data.StBase = EnumHelper.SituacaoBase.BA9.ToString();
+
+                _baseconhecimentoRepo.Add(data);
+
+                // Palavras Chave existentes
+                var words = model.PalavraChave.KeyWordToArray();
+
+                // Lista das palavras chave que foram informadas
+                var wordID = new List<decimal>();
+
+                // Verifica se a Palavra Chave informada já existe na tabela
+                var wordsData = await _palavrachaveRepo.GetAsync();
+
+                foreach (var word in words)
                 {
-                    ModelState.Remove("PalavraChave");
-                    ViewBag.IsEditing = "S";
-                }
+                    decimal IdWord = wordsData
+                        .Where(c => c.Palavra.ToUpper() == word.ToUpper())
+                        .Select(c => c.IdPalavra).FirstOrDefault();
 
-                if (!ModelState.IsValid)
-                {
-                    await getTipoVisualizacaoSelect();
-                    await getSituacaoBaseSelect();
-                    await getProdutosBaseSelect();
-
-                    return View(model);
-                }
-
-                var userContext = Convert.ToDecimal(HttpContextHelper.GetAuthUserId(HttpContext));
-
-                var data = model.ToData(userContext, id);
-
-                if (id == 0)
-                {
-                    data.DtHrRegistro = Convert.ToDecimal(DateTime.Now.ToString("yyyyMMddHHmmss"));
-                    data.StBase = EnumHelper.SituacaoBase.BA9.ToString();
-
-                    _baseconhecimentoRepo.Add(data);
-
-                    // Palavras Chave existentes
-                    var words = model.PalavraChave.KeyWordToArray();
-
-                    // Lista das palavras chave que foram informadas
-                    var wordID = new List<decimal>();
-
-                    // Verifica se a Palavra Chave informada já existe na tabela
-                    var wordsData = await _palavrachaveRepo.GetAsync();
-
-                    foreach (var word in words)
+                    if (IdWord == 0)
                     {
-                        decimal IdWord = wordsData
-                            .Where(c => c.Palavra.ToUpper() == word.ToUpper())
-                            .Select(c => c.IdPalavra).FirstOrDefault();
-
-                        if (IdWord == 0)
+                        // Cria a nova palavra chave
+                        var plvr = new PalavraChave()
                         {
-                            // Cria a nova palavra chave
-                            var plvr = new PalavraChave()
-                            {
-                                Palavra = word,
-                                IdUsuarioRegistro = data.IdUsuarioRegistro
-                            };
-
-                            _palavrachaveRepo.Add(plvr);
-
-                            wordID.Add(plvr.IdPalavra);
-                        }
-                        else
-                        {
-                            wordID.Add(IdWord);
-                        }
-                    }
-
-                    // Busca Chave
-                    foreach (var word in wordID)
-                    {
-                        _buscachaveRepo.Add(new BuscaChave()
-                        {
-                            Id = data.Id,
-                            IdPalavra = word,
+                            Palavra = word,
                             IdUsuarioRegistro = data.IdUsuarioRegistro
-                        });
+                        };
+
+                        _palavrachaveRepo.Add(plvr);
+
+                        wordID.Add(plvr.IdPalavra);
+                    }
+                    else
+                    {
+                        wordID.Add(IdWord);
                     }
                 }
-                else
+
+                // Busca Chave
+                foreach (var word in wordID)
                 {
-                    _baseconhecimentoRepo.Update(data);
+                    _buscachaveRepo.Add(new BuscaChave()
+                    {
+                        Id = data.Id,
+                        IdPalavra = word,
+                        IdUsuarioRegistro = data.IdUsuarioRegistro
+                    });
                 }
-
-                await _uow.CommitAsync();
-
-                return RedirectToAction("Index");
             }
-            catch (Exception e)
+            else
             {
-                _logger.LogError(99, e, LoggerHelper.GetStringLogError(e.Message), new { });
-
-                ViewBag.CustomError = e.Message;
-                return View("CustomError");
+                _baseconhecimentoRepo.Update(data);
             }
+
+            await _uow.CommitAsync();
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult About() => View();

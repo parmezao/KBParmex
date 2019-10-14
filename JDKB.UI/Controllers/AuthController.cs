@@ -25,15 +25,12 @@ namespace JDKB.UI.Controllers
         private readonly IUsuarioRepository _usuarioRepo;
         private readonly IUnityOfWork _uow;
         private readonly ICustomAppSettings _credential;
-        private readonly ILogger<AuthController> _logger;
-
         public AuthController(IUsuarioRepository usuarioRepo, ICustomAppSettings credential,
             ILogger<AuthController> logger, IUnityOfWork uow)
         {
             _usuarioRepo = usuarioRepo;
             _uow = uow;
             _credential = credential;
-            _logger = logger;
         }
 
         [HttpGet]
@@ -43,28 +40,17 @@ namespace JDKB.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignIn(string returnUrl, SignInVM model)
         {
-            try
-            { 
-                var usuario = await _usuarioRepo.AuthenticateAsync(model.Email, model.Senha.Encrypt());
+            var usuario = await _usuarioRepo.AuthenticateAsync(model.Email, model.Senha.Encrypt());
 
-                if (usuario == null)
-                {
-                    ModelState.AddModelError("", "Email e/ou Senha inválidos");
-                    return View(model);
-                }
-
-                AddSignIn(usuario, model.Lembrar);
-
-                return LocalRedirect(returnUrl ?? "/");
-            }
-            catch (Exception e)
+            if (usuario == null)
             {
-                _logger.LogError(99, e, LoggerHelper.GetStringLogError(e.Message), new { });
-
-                ViewBag.CustomError = e.Message;
-                return View("CustomError");
+                ModelState.AddModelError("", "Email e/ou Senha inválidos");
+                return View(model);
             }
 
+            AddSignIn(usuario, model.Lembrar);
+
+            return LocalRedirect(returnUrl ?? "/");
         }
         private async void AddSignIn(Usuario usuario, bool lembraSenha = true)
         {
@@ -109,58 +95,48 @@ namespace JDKB.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNewUser(string returnUrl, UsuarioAddEditVM model)
         {
-            try
+            var data = model.ToData();
+
+            data.HashSenha = model.Senha.Encrypt();
+            data.DhRegistro = Convert.ToDecimal(DateTime.Now.ToString("yyyyMMddHHmmss"));
+            data.StUsuario = EnumHelper.SituacaoUsuario.UA9.ToString();
+
+            _usuarioRepo.Add(data);
+            data.IdUsuarioRegistro = data.IdUsuario;
+
+            await _uow.CommitAsync();
+
+            await Task.Run(async () =>
             {
-                var data = model.ToData();
+                int userId = Convert.ToInt32(data.IdUsuario);
 
-                data.HashSenha = model.Senha.Encrypt();
-                data.DhRegistro = Convert.ToDecimal(DateTime.Now.ToString("yyyyMMddHHmmss"));
-                data.StUsuario = EnumHelper.SituacaoUsuario.UA9.ToString();
-
-                _usuarioRepo.Add(data);
-                data.IdUsuarioRegistro = data.IdUsuario;
-
-                await _uow.CommitAsync();
-
-                await Task.Run(async () =>
+                var _userToSend = new EmailFormModel()
                 {
-                    int userId = Convert.ToInt32(data.IdUsuario);
-
-                    var _userToSend = new EmailFormModel()
-                    {
-                        FromEmail = data.EmailUsuario,
-                        FromName = data.NmUsuario
-                    };
-
-                // Credenciais para o envio do email
-                var credentials = _credential.GetEmailCredentials();
-
-                    var credEmail = credentials.Where(k => k.Key == "Email").Select(e => e.Value).ToList().FirstOrDefault();
-                    var credPass = credentials.Where(k => k.Key == "Password").Select(e => e.Value).ToList().FirstOrDefault();
-                    var credHost = credentials.Where(k => k.Key == "Host").Select(e => e.Value).ToList().FirstOrDefault();
-                    var credPort = credentials.Where(k => k.Key == "Port").Select(e => e.Value).ToList().FirstOrDefault();
-
-                    var _sender = new Sender(credEmail, credPass, credHost, Convert.ToInt16(credPort));
-
-                    await _sender.SendConfirmation(_userToSend, userId);
-                });
-
-                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                {
-                    return Redirect(returnUrl);
-                }
-                else
-                {
-                    return View("Success", data);
+                    FromEmail = data.EmailUsuario,
+                    FromName = data.NmUsuario
                 };
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(99, e, LoggerHelper.GetStringLogError(e.Message), new { });
 
-                ViewBag.CustomError = e.Message;
-                return View("CustomError");
+            // Credenciais para o envio do email
+            var credentials = _credential.GetEmailCredentials();
+
+                var credEmail = credentials.Where(k => k.Key == "Email").Select(e => e.Value).ToList().FirstOrDefault();
+                var credPass = credentials.Where(k => k.Key == "Password").Select(e => e.Value).ToList().FirstOrDefault();
+                var credHost = credentials.Where(k => k.Key == "Host").Select(e => e.Value).ToList().FirstOrDefault();
+                var credPort = credentials.Where(k => k.Key == "Port").Select(e => e.Value).ToList().FirstOrDefault();
+
+                var _sender = new Sender(credEmail, credPass, credHost, Convert.ToInt16(credPort));
+
+                await _sender.SendConfirmation(_userToSend, userId);
+            });
+
+            if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+            {
+                return Redirect(returnUrl);
             }
+            else
+            {
+                return View("Success", data);
+            };
         }
 
         [HttpGet]

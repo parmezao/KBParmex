@@ -1,12 +1,10 @@
 ﻿
 @{
     ViewData["Title"] = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    List<Anexo> lsAnexo = (List<Anexo>)ViewData["Anexos"] == null ? new List<Anexo>() : (List<Anexo>)ViewData["Anexos"];
-}
-
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <style>
 
     .dropzone {
@@ -15,7 +13,33 @@
         min-height: 250px;
     }
 
+    .submit-lente {
+      position:absolute;
+      top:0; right:0;
+      z-index:10;
+      border:none;
+      background:transparent;
+      outline:none;
+    }
+
+    .submit-line {
+      position: relative;
+      width: 200px;
+    }
+
+    .submit-line input {
+      width: 100%;
+    }
+
 </style>
+
+
+<div class="submit-line">
+    <input type="text" />
+    <button class="submit-lente" type="submit">
+        <i class="fa fa-search"></i>
+    </button>
+</div>
 
 <label for="Anexos" class="control-label col-sm-1">Anexos</label>
 
@@ -33,6 +57,7 @@
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/dropzone/dropzone.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script>
 
     function Enviar() {
