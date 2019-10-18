@@ -4,6 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<style>
+    
+    #toast-container > .toast-error:before {
+        font-size: 20px;
+    }
+
+</style>
+
 <div class="container">
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
@@ -19,7 +29,7 @@
                                 <i class="fa fa-envelope-o"></i>
                             </span>
                             <input type="email" id="Email" class="form-control input-sm" placeholder="Endereço de e-mail" autofocus="" name="Email" required />
-                            <label class="alert-danger" id="validate_Email" style="margin-bottom: 10px"></label>
+                            <label class="alert-danger" id="validate_Email" style="margin-bottom: 14px"></label>
                         </div>
                     </div>
 
@@ -31,14 +41,21 @@
 </div>
 
 <script>
-  
+
+    function isEmail(email) {
+
+        var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;        
+        return regex.test(email);
+    }
+
     function Recover() {
 
         var email = $("#Email").val();
 
-        if (email == "") {
+        if (email == "" || !isEmail(email)) {
             toastr.warning('Informe um email válido para recuperação!');
             $("#Email").focus();
+
             return ;
         }            
 

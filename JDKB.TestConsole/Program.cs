@@ -33,7 +33,43 @@ namespace JDKB.TestConsole
 
         static void Main(string[] args)
         {
+            var Colunas = new List<EstruturaCampo>
+            {
+                new EstruturaCampo
+                {
+                    Nome = "Nome",
+                    Tipo = typeof(string),
+                    Tamanho = 50
+                },
+                new EstruturaCampo
+                {
+                    Nome = "Telefone",
+                    Tipo = typeof(string),
+                    Tamanho = 20
+                },
+                new EstruturaCampo
+                {
+                    Nome = "Idade",
+                    Tipo = typeof(long)
+                },
+                new EstruturaCampo
+                {
+                    Nome = "Endereco",
+                    Tipo = typeof(string),
+                    Tamanho = 15
+                }
+            };
 
+            List<DataColumn> Retorno = Colunas
+                .Select(x => new DataColumn(x.Nome, x.Tipo) { MaxLength = x.Tipo == typeof(string) ? x.Tamanho : -1 }).ToList();
+
+          
+            foreach (var item in Retorno)
+            {
+                Console.WriteLine(item.ColumnName);
+            }
+
+            Console.ReadKey();
 
             //foreach (int i in Integers())
             //{
@@ -41,7 +77,7 @@ namespace JDKB.TestConsole
             //}
 
             //Console.WriteLine($"Data: {StatusEnum.Active.ToString()}");
-           
+
             //Console.ReadKey();
 
             //return;

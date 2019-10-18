@@ -2,6 +2,7 @@
 using JDKB.Domain.Contracts.Data;
 using JDKB.Domain.Contracts.Repositories;
 using JDKB.Domain.Entities;
+using JDKB.Helpers;
 using JDKB.UI.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
@@ -71,16 +73,23 @@ namespace JDKB.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Upload() => View();
+        public async Task<IActionResult> Upload()
+        {
+            var anexos = await _anexoRepo.GetAsync();
+
+            //return new JsonResult(anexos);
+            return View(anexos);
+        }
 
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
             if (Request.Form.Files == null || Request.Form.Files.Count == 0)
-                return Content("file not selected");
+                return Content("Arquivo não selecionado");
 
-            /// Salva na Base
-            var count = 0;
+            var anexos = await _anexoRepo.GetAsync();
+            int maxId = anexos.DefaultIfEmpty(new Anexo { Id = 0 }).Max(a => a.Id) + 1;
+            
             foreach (var item in Request.Form.Files)
             {
                 /// Salva o arquivo em memória
@@ -99,25 +108,19 @@ namespace JDKB.UI.Controllers
                     //    await fs.FlushAsync();
                     //}
 
+                    /// Salva na Base
                     _anexoRepo.Add(new Anexo
                     {
-                        Id = count + 1,
+                        Id = maxId,
                         NomeArquivo = item.FileName,
                         Arquivo = ms.ToArray()
                     });
-                    
-                    count++;
+
+                    maxId++;
                 }
             }
 
             await _uow.CommitAsync();
-
-            //var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", file.FileName);
-
-            //using (var stream = new FileStream(path, FileMode.Create))
-            //{
-            //    await file.CopyToAsync(stream);
-            //}
 
             return RedirectToAction("Upload");
         }
@@ -172,5 +175,47 @@ namespace JDKB.UI.Controllers
 
             return View("Upload", ViewData);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Download(int id)
+        {
+            var anexo = await _anexoRepo.GetAsync(id);
+
+            //var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot" + "/UserFiles/files/", filename);
+
+            var memory = new MemoryStream();
+            using (var ms = new MemoryStream(anexo.Arquivo))
+            {
+                await ms.CopyToAsync(memory);
+                memory.Seek(0, SeekOrigin.Begin);                
+            }
+            
+            return File(memory, anexo.NomeArquivo.GetMimeType(), Path.GetFileName(anexo.NomeArquivo));
+        }
+
+        //private string GetContentType(string path)
+        //{
+        //    var types = GetMimeTypes();
+        //    var ext = Path.GetExtension(path).ToLowerInvariant();
+
+        //    return types[ext];
+        //}
+
+        //private Dictionary<string, string> GetMimeTypes()
+        //{
+        //    return new Dictionary<string, string>
+        //    {
+        //        {".png", "image/png"},
+        //        {".jpg", "image/jpeg"},
+        //        {".jpeg", "image/jpeg"},
+        //        {".gif", "image/gif"},
+        //        {".svg", "image/svg+xml"},
+        //        {".xml", "image/svg+xml"},
+        //        {".txt", "text/plain"},
+        //        {".docx", "text/plain"},
+        //        {".doc", "text/plain"}
+        //    };
+        //}
+
     }
 }
